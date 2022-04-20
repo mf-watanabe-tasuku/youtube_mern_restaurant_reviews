@@ -29,7 +29,7 @@ export default class ReviewsController {
             const text = req.body.text;
             const date = new Date();
 
-            const reviewResponse = await ReviewDAO.updateReview(
+            const reviewResponse = await ReviewsDAO.updateReview(
                 reviewId,
                 req.body.user_id,
                 text,
