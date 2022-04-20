@@ -27,11 +27,25 @@ export default class ReviewsDAO {
             return await reviews.insertOne(reviewDoc);
         } catch (e) {
             console.error(`Unable to post review: ${e}`);
-            return { error: e }
+            return { error: e };
         }
     }
 
-    static async deleteReview(reviewId, userid) {
+    static async updateReview(reviewId, userId, text, date) {
+        try {
+            const updateResponse = await reviews.updateOne(
+                { user_id: userId, _id: Object(reviewId) },
+                { $set: { text: text, date: date } },
+            );
+
+            return updateResponse;
+        } catch (e) {
+            console.error(`Unable to upadte review: ${e}`);
+            return { error: e };
+        }
+    }
+
+    static async deleteReview(reviewId, userId) {
         try {
             const deleteResponse = await reviews.deleteOne({
                 _id: ObjectId(reviewId),

@@ -46,6 +46,8 @@ export default class ReviewsController {
                     "Unable to update review - user may not be original poster"
                 );
             }
+
+            res.json({ status: "success" });
         } catch (e) {
             res.status(500).json({ error: e.message });
         }
