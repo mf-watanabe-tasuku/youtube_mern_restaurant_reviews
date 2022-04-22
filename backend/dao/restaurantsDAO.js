@@ -4,7 +4,7 @@ const ObjectId = mongodb.ObjectId;
 let restaurants
 
 export default class RestaurantsDAO {
-    static async injectDB (conn) {
+    static async injectDB(conn) {
         if (restaurants) {
             return;
         }
@@ -29,7 +29,7 @@ export default class RestaurantsDAO {
             } else if ("cuisine" in filters) {
                 query = { "cuisine": { $eq: filters["cuisine"] } }
             } else if ("zipcode" in filters) {
-                query = { "address.zipcode": { $eq: filters["zipcode"]}}
+                query = { "address.zipcode": { $eq: filters["zipcode"] } }
             }
         }
 
